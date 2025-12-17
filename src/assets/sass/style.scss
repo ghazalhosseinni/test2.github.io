@@ -1,0 +1,123 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import "./variables.scss";
+
+@font-face {
+  font-family: IRANSans;
+  src: url("@/assets/fonts/IRANSans(FaNum).ttf");
+}
+
+body,
+html {
+  margin: 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+* {
+  font-family: IRANSans;
+
+  @media only screen and (min-width: 1300px) {
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+    &::-webkit-scrollbar-track {
+      background-color: #ebebeb;
+    }
+    &::-webkit-scrollbar-thumb {
+      background-color: #9c9c9c;
+    }
+  }
+}
+
+// ---  Fade transition ---
+.fade-enter-active,
+.fade-leave-active {
+  transition: opacity 0.3s;
+}
+
+.fade-enter,
+.fade-leave-to {
+  opacity: 0;
+}
+
+// --- Bounce transition ---
+.bounce-enter-active {
+  animation: bounce-in 0.3s;
+}
+.bounce-leave-active {
+  animation: bounce-in 0.3s reverse;
+}
+@keyframes bounce-in {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.25);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@layer components {
+  .btn {
+    border-radius: 16px !important;
+    letter-spacing: 0 !important;
+    box-shadow: none !important;
+    font-size: 16px !important;
+
+    .v-icon {
+      --v-icon-size-multiplier: 1.4 !important;
+    }
+
+    &-shadow {
+      box-shadow: 0 16px 32px 1px #0bcf7d30 !important;
+    }
+  }
+}
+
+@layer utilities {
+  // Icons
+  .primary-icon {
+    path {
+      stroke: $primary;
+    }
+  }
+  .fill-white {
+    path {
+      fill: #fff;
+    }
+  }
+}
+
+// Input style
+.v-field {
+  border-radius: 16px !important;
+  font-family: IRANSans;
+  input {
+    font-family: IRANSans;
+  }
+}
+.v-field__outline:not(.text-primary) {
+  .v-field__outline__start,
+  .v-field__outline__end,
+  .v-field__outline__notch::before,
+  .v-field__outline__notch::after {
+    border-color: #d2d2d2 !important;
+  }
+}
+
+// #nprogress .bar {
+//   background: #b4a25d !important;
+// }
+// #nprogress .peg {
+//   box-shadow: 0 0 10px #b4a25d, 0 0 5px #b4a25d !important;
+// }
+// #nprogress .spinner-icon {
+//   border-top-color: #b4a25d !important;
+//   border-left-color: #b4a25d !important;
+// }
